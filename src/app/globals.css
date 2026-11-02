@@ -1,0 +1,300 @@
+@import "tailwindcss";
+
+/* Design tokens — see docs/design-system.md (generated with UI/UX Pro Max, brand accent from the GeeTex logo) */
+@theme {
+  --color-paper: #fafaf9;
+  --color-surface: #ffffff;
+  --color-sand: #f5f5f4;
+  --color-ink: #1c1917;
+  --color-ink-2: #44403c;
+  --color-muted: #57534e;
+  --color-line: #d6d3d1;
+  --color-line-strong: #78716c;
+  --color-brand: #0060b0;
+  --color-brand-strong: #004a8a;
+  --color-brand-tint: #e8f1fa;
+  --color-on-brand: #ffffff;
+  --color-glow-1: #0060b0;
+  --color-glow-2: #00a048;
+  --color-leaf: #00a048;
+  --color-on-dark: #fafaf9;
+  --color-on-dark-muted: #a8a29e;
+  --color-brand-on-dark: #8cc4f2;
+  --color-danger: #b91c1c;
+  --color-danger-tint: #fef2f2;
+  --color-success: #15803d;
+  --color-success-tint: #f0fdf4;
+
+  --font-sans: var(--font-work-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-newsreader), ui-serif, Georgia, serif;
+
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+
+  --text-display: clamp(2.6rem, 1.6rem + 4.2vw, 5rem);
+  --text-display--line-height: 1.02;
+  --text-h1: clamp(2.25rem, 1.7rem + 2.4vw, 3.5rem);
+  --text-h1--line-height: 1.08;
+  --text-h2: clamp(1.875rem, 1.5rem + 1.6vw, 2.75rem);
+  --text-h2--line-height: 1.12;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Colour themes ────────────────────────────────────────────────────────────
+   "Classic" is the @theme default above. Each theme below overrides the same tokens,
+   so every utility (bg-paper, text-brand, …) follows the theme picked in the header. */
+[data-theme="saffron"] {
+  --color-paper: #fbf7f0;
+  --color-surface: #fffdf9;
+  --color-sand: #f4ece0;
+  --color-ink: #22170f;
+  --color-ink-2: #4a3a2c;
+  --color-muted: #6b5644;
+  --color-line: #e3d6c4;
+  --color-line-strong: #8a7560;
+  --color-brand: #b4401a;
+  --color-brand-strong: #8f3112;
+  --color-brand-tint: #fbe6d8;
+  --color-leaf: #d4940f;
+  --color-on-dark: #fbf7f0;
+  --color-on-dark-muted: #cbb9a6;
+  --color-brand-on-dark: #f6ad85;
+  --color-glow-1: #e0662f;
+  --color-glow-2: #f2b33d;
+}
+[data-theme="emerald"] {
+  --color-paper: #f5faf7;
+  --color-surface: #ffffff;
+  --color-sand: #e9f3ee;
+  --color-ink: #0f1f1a;
+  --color-ink-2: #2b433b;
+  --color-muted: #475f56;
+  --color-line: #cde0d6;
+  --color-line-strong: #688277;
+  --color-brand: #047857;
+  --color-brand-strong: #065f46;
+  --color-brand-tint: #dcf2e8;
+  --color-leaf: #0ea5a4;
+  --color-on-dark: #f5faf7;
+  --color-on-dark-muted: #a4bab1;
+  --color-brand-on-dark: #6ee7b7;
+  --color-glow-1: #10b981;
+  --color-glow-2: #14b8c4;
+}
+[data-theme="midnight"] {
+  color-scheme: dark;
+  --color-paper: #0a0f1d;
+  --color-surface: #111a2e;
+  --color-sand: #0e1628;
+  --color-ink: #eef2f8;
+  --color-ink-2: #c3cddc;
+  --color-muted: #97a6bc;
+  --color-line: #233049;
+  --color-line-strong: #5d6e89;
+  --color-brand: #7cb4ff;
+  --color-brand-strong: #a9ceff;
+  --color-brand-tint: #17284d;
+  --color-on-brand: #0a0f1d;
+  --color-leaf: #4ade80;
+  --color-on-dark: #eef2f8;
+  --color-on-dark-muted: #9fb0c8;
+  --color-brand-on-dark: #7cb4ff;
+  --color-danger: #f87171;
+  --color-danger-tint: #2a1316;
+  --color-success: #4ade80;
+  --color-success-tint: #0f2418;
+  --color-glow-1: #3b6cff;
+  --color-glow-2: #9b5cff;
+}
+/* Dark bands (footer, values) use bg-ink. In the dark theme ink is light text, so re-point it inside bands. */
+[data-theme="midnight"] .on-dark {
+  --color-ink: #050814;
+  --color-ink-2: #1b2440;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem; /* sticky header must not hide anchored content */
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern";
+  }
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .on-dark :focus-visible {
+    outline-color: var(--color-brand-on-dark);
+  }
+  ::selection {
+    background: var(--color-brand-tint);
+    color: var(--color-ink);
+  }
+  a, button, [role="button"], summary, label[for], select {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 768px) {
+    .container-page { padding-inline: 2rem; }
+  }
+  .section-y {
+    padding-block: clamp(4rem, 2.5rem + 6vw, 7rem);
+  }
+  .eyebrow {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .spec {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  /* Long-form article body (migrated blog HTML) */
+  .prose-article {
+    color: var(--color-ink-2);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+  .prose-article > * + * { margin-top: 1.15em; }
+  .prose-article h2 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    font-size: 1.75rem;
+    line-height: 1.2;
+    font-weight: 500;
+    margin-top: 2.2em;
+  }
+  .prose-article h3 {
+    color: var(--color-ink);
+    font-size: 1.2rem;
+    line-height: 1.35;
+    font-weight: 600;
+    margin-top: 1.8em;
+  }
+  .prose-article h4 { color: var(--color-ink); font-weight: 600; margin-top: 1.5em; }
+  .prose-article strong, .prose-article b { color: var(--color-ink); font-weight: 600; }
+  .prose-article a {
+    color: var(--color-brand);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  .prose-article a:hover { color: var(--color-brand-strong); }
+  .prose-article ul { list-style: disc; padding-left: 1.4em; }
+  .prose-article ol { list-style: decimal; padding-left: 1.4em; }
+  .prose-article li + li { margin-top: 0.4em; }
+  .prose-article li::marker { color: var(--color-muted); }
+  .prose-article blockquote {
+    border-left: 2px solid var(--color-brand);
+    padding-left: 1.25rem;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--color-ink);
+  }
+  .prose-article table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  .prose-article th, .prose-article td {
+    border: 1px solid var(--color-line);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+    min-width: 8rem;
+  }
+  .prose-article th { background: var(--color-sand); color: var(--color-ink); font-weight: 600; }
+  .prose-article hr { border: 0; border-top: 1px solid var(--color-line); margin-block: 2.5em; }
+}
+
+@layer components {
+  /* Hero word with the theme's two accent colours. */
+  .text-gradient {
+    background: linear-gradient(100deg, var(--color-brand) 10%, var(--color-glow-2) 95%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  /* Soft colour wash behind the hero, tinted by the theme. */
+  .glow-blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(70px);
+    opacity: 0.22;
+    pointer-events: none;
+  }
+  [data-theme="midnight"] .glow-blob { opacity: 0.35; }
+  .card-lift {
+    transition: box-shadow 300ms var(--ease-out-soft), border-color 200ms;
+  }
+  .card-lift:hover {
+    box-shadow: 0 22px 44px -22px color-mix(in srgb, var(--color-brand) 45%, transparent);
+    border-color: color-mix(in srgb, var(--color-brand) 55%, var(--color-line));
+  }
+  /* Endless ribbon of yarn names under the hero. */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 38s linear infinite;
+  }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+}
+
+/* Motion elements start hidden; without JS they must still show. */
+html:not(.js) [data-motion] {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+}
+
+/* Scroll reveal — content is visible by default; only hidden once JS marks the document ready. */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 350ms var(--ease-out-soft), transform 350ms var(--ease-out-soft);
+  }
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
