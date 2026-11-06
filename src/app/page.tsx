@@ -73,11 +73,16 @@ export default function HomePage() {
               <span>Est. {company.founded}</span>
             </StaggerItem>
             <StaggerItem>
-              <h1
-                id="hero-title"
-                className="mt-6 font-[family-name:var(--font-wordmark)] text-[clamp(2.5rem,1.5rem+5vw,6rem)] font-extrabold uppercase leading-[0.95] tracking-[0.03em] text-[#8dc63f] [text-shadow:2px_2px_0_#1f7a35,4px_4px_0_#176028,6px_8px_24px_rgba(0,0,0,0.55)]"
-              >
-                GEE TEX
+              <h1 id="hero-title" className="mt-6">
+                <Image
+                  src="/brand/geetex-wordmark.svg"
+                  alt="GEE TEX Knitting Yarns"
+                  width={4716}
+                  height={1502}
+                  unoptimized
+                  preload
+                  className="h-auto w-[clamp(16rem,8rem+32vw,36rem)] [filter:drop-shadow(0_4px_18px_rgba(0,0,0,0.55))]"
+                />
               </h1>
             </StaggerItem>
             <StaggerItem as="p" className="mt-6 max-w-2xl font-display text-2xl italic leading-snug text-on-dark md:text-3xl">
