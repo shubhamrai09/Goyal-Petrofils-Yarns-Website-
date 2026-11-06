@@ -73,13 +73,13 @@ export default function HomePage() {
             <StaggerItem>
               <h1 id="hero-title" className="mt-6">
                 <Image
-                  src="/brand/geetex-wordmark.svg"
+                  src="/brand/geetex-hero-logo.webp"
                   alt="GEE TEX Knitting Yarns"
-                  width={4170}
-                  height={1404}
+                  width={259}
+                  height={109}
                   unoptimized
                   preload
-                  className="h-auto w-[clamp(16rem,8rem+32vw,36rem)] [filter:drop-shadow(0_4px_18px_rgba(0,0,0,0.55))]"
+                  className="block h-[70px] w-auto"
                 />
               </h1>
             </StaggerItem>
