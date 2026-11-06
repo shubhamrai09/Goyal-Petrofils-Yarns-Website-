@@ -68,8 +68,6 @@ export default function HomePage() {
             <StaggerItem as="p" className="eyebrow flex flex-wrap items-center gap-x-3 gap-y-1 text-on-dark/80">
               <span>{company.legalName}</span>
               <span aria-hidden="true" className="h-px w-6 bg-on-dark/50" />
-              <span>Ludhiana, Punjab</span>
-              <span aria-hidden="true" className="h-px w-6 bg-on-dark/50" />
               <span>Est. {company.founded}</span>
             </StaggerItem>
             <StaggerItem>

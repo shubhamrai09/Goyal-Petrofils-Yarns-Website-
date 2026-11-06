@@ -235,7 +235,7 @@ export function BooksSection() {
       <div className="container-page">
         <SectionHeading
           eyebrow="The library"
-          title={<span id="books-title">Our books.</span>}
+          title={<span id="books-title">OUR BOOK</span>}
           intro="Reading from the people who make the yarn."
         />
         {books.length > 0 ? (
