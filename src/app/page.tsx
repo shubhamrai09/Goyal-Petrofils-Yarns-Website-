@@ -68,15 +68,15 @@ export default function HomePage() {
             <StaggerItem as="p" className="eyebrow flex flex-wrap items-center gap-x-3 gap-y-1 text-on-dark/80">
               <span>{company.legalName}</span>
               <span aria-hidden="true" className="h-px w-6 bg-on-dark/50" />
-              <span>Est. {company.founded}</span>
+              <span>Since {company.founded}</span>
             </StaggerItem>
             <StaggerItem>
               <h1 id="hero-title" className="mt-6">
                 <Image
                   src="/brand/geetex-hero-logo.webp"
                   alt="GEE TEX Knitting Yarns"
-                  width={259}
-                  height={109}
+                  width={1400}
+                  height={561}
                   unoptimized
                   preload
                   className="block h-[clamp(88px,4rem+5vw,140px)] w-auto"
