@@ -77,8 +77,8 @@ export default function HomePage() {
                 <Image
                   src="/brand/geetex-wordmark.svg"
                   alt="GEE TEX Knitting Yarns"
-                  width={4716}
-                  height={1502}
+                  width={4170}
+                  height={1404}
                   unoptimized
                   preload
                   className="h-auto w-[clamp(16rem,8rem+32vw,36rem)] [filter:drop-shadow(0_4px_18px_rgba(0,0,0,0.55))]"
