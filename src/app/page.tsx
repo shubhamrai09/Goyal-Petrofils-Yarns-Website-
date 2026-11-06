@@ -79,7 +79,7 @@ export default function HomePage() {
                   height={109}
                   unoptimized
                   preload
-                  className="block h-[70px] w-auto"
+                  className="block h-[clamp(88px,4rem+5vw,140px)] w-auto"
                 />
               </h1>
             </StaggerItem>
