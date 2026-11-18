@@ -8,6 +8,7 @@ import {
   BooksSection,
   BusinessInquirySection,
   CertificationsSection,
+  InstagramSection,
   DirectorMessageSection,
   MadeForPeopleSection,
   StorySection,
@@ -160,6 +161,9 @@ export default function HomePage() {
           </ul>
         </div>
       </section>
+
+      {/* Instagram Page — directly after the Yarn segments row (ends with Carpet Yarns) */}
+      <InstagramSection />
 
       <StorySection />
       <DirectorMessageSection />

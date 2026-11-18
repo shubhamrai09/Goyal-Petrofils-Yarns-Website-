@@ -627,3 +627,81 @@ export function BusinessInquirySection() {
     </section>
   );
 }
+
+/* ── Instagram ────────────────────────────────────────────────────────────────── */
+
+/** Instagram glyph (lucide no longer ships brand icons). */
+function InstagramIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
+      <circle cx="12" cy="12" r="4.25" />
+      <circle cx="17.5" cy="6.5" r="0.75" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+const instagramTiles: Photo[] = [
+  photos.dyedRack,
+  photos.handKnitting,
+  photos.crochetSquares,
+  photos.millAisle,
+  photos.pastelYarnTable,
+  photos.skeins,
+];
+
+export function InstagramSection() {
+  const handle = contact.instagram.replace(/\/+$/, "").split("/").pop();
+  return (
+    <section aria-labelledby="insta-title" className="section-y border-b border-line bg-sand">
+      <div className="container-page">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <SectionHeading
+            eyebrow="Instagram Page"
+            title={<span id="insta-title">Instagram Page</span>}
+            intro={
+              <>
+                New shades, mill updates and what makers create with our yarn, on{" "}
+                <a href={contact.instagram} target="_blank" rel="noopener noreferrer" className="font-medium text-brand underline-offset-4 hover:underline">
+                  @{handle}
+                </a>
+                .
+              </>
+            }
+          />
+          <ButtonLink href={contact.instagram} icon="external" className="shrink-0 self-start md:self-auto">
+            Follow @{handle}
+          </ButtonLink>
+        </div>
+        <Stagger as="ul" className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
+          {instagramTiles.map((p) => (
+            <StaggerItem as="li" key={p.alt}>
+              <a
+                href={contact.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${p.alt} — view @${handle} on Instagram`}
+                className="group relative block aspect-square overflow-hidden rounded-sm bg-sand"
+              >
+                <Image
+                  src={p.src}
+                  alt=""
+                  fill
+                  placeholder="blur"
+                  sizes="(min-width: 1024px) 16vw, (min-width: 768px) 33vw, 50vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.06] motion-reduce:transition-none"
+                />
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-0 flex items-center justify-center bg-black/0 text-on-dark opacity-0 transition duration-300 group-hover:bg-black/40 group-hover:opacity-100 group-focus-visible:bg-black/40 group-focus-visible:opacity-100"
+                >
+                  <InstagramIcon className="size-8" />
+                </span>
+              </a>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      </div>
+    </section>
+  );
+}
