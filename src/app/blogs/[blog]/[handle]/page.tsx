@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight } from "lucide-react";
@@ -6,6 +7,7 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { ButtonLink, JsonLd } from "@/components/ui";
 import { blogs, formatDate, getArticle, getArticles, isBlogId, readingMinutes } from "@/lib/articles";
 import { toSummary } from "@/lib/article-summary";
+import { articlePhoto } from "@/lib/article-photo";
 import { SITE_URL } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 
@@ -29,7 +31,7 @@ export async function generateMetadata({ params }: PageProps<"/blogs/[blog]/[han
     title: a.title,
     description: trimDescription(a.summary),
     path: `/blogs/${blog}/${handle}`,
-    image: blogs[blog].photo.src,
+    image: articlePhoto(a).src,
     type: "article",
     publishedTime: a.published,
   });
@@ -46,6 +48,7 @@ export default async function ArticlePage({ params }: PageProps<"/blogs/[blog]/[
     .slice(0, 3)
     .map(toSummary);
   const url = `${SITE_URL}/blogs/${blog}/${handle}`;
+  const photo = articlePhoto(a);
 
   return (
     <>
@@ -83,6 +86,17 @@ export default async function ArticlePage({ params }: PageProps<"/blogs/[blog]/[
                 <time dateTime={a.published}>{formatDate(a.published)}</time>
                 <span>{readingMinutes(a.html)} min read</span>
               </p>
+            </div>
+            <div className="relative mt-10 aspect-[21/9] max-w-5xl overflow-hidden rounded-sm border border-line bg-sand md:mt-14">
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                priority
+                placeholder="blur"
+                sizes="(min-width: 1280px) 1024px, calc(100vw - 2rem)"
+                className="object-cover"
+              />
             </div>
           </div>
         </header>

@@ -19,7 +19,7 @@ import {
 import { photos } from "@/lib/images";
 import { products } from "@/lib/products";
 import { SITE_URL, company, stats, whatsappLink } from "@/lib/site";
-import { blogs, getArticles } from "@/lib/articles";
+import { getArticles } from "@/lib/articles";
 import { toSummary } from "@/lib/article-summary";
 import { pageMeta } from "@/lib/seo";
 import { HeroFade, HeroVideo, Stagger, StaggerItem } from "@/components/motion";
@@ -43,10 +43,8 @@ const segments = [
 ];
 
 export default function HomePage() {
-  // Three most recent published articles across both blogs; cards use the blog's cover photo (articles carry no images).
-  const latest = getArticles()
-    .slice(0, 3)
-    .map((a) => ({ ...toSummary(a), photo: blogs[a.blog].photo }));
+  // Three most recent published articles across both blogs, each with its own topic-matched cover photo.
+  const latest = getArticles().slice(0, 3).map(toSummary);
 
   return (
     <>

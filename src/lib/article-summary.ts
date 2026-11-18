@@ -1,5 +1,6 @@
 import "server-only";
 import type { ArticleSummary } from "@/components/ArticleCard";
+import { articlePhoto } from "./article-photo";
 import { articleHref, blogs, formatDate, readingMinutes, type Article } from "./articles";
 
 /** Strip the heavy body HTML before anything is passed to cards or client components. */
@@ -12,5 +13,6 @@ export function toSummary(a: Article): ArticleSummary {
     dateIso: a.published,
     blogLabel: blogs[a.blog].navLabel,
     minutes: readingMinutes(a.html),
+    photo: articlePhoto(a),
   };
 }

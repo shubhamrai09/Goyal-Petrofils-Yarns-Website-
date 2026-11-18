@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import type { Photo } from "@/lib/images";
 
 export type ArticleSummary = {
   href: string;
@@ -9,12 +11,24 @@ export type ArticleSummary = {
   dateIso: string;
   blogLabel: string;
   minutes: number;
+  /** Cover image for the card (decorative: the title carries the meaning). */
+  photo: Photo;
 };
 
 export function ArticleCard({ a, headingLevel = "h3" }: { a: ArticleSummary; headingLevel?: "h2" | "h3" }) {
   const H = headingLevel;
   return (
-    <article className="group relative flex h-full flex-col border-t border-ink pt-5">
+    <article className="group relative flex h-full flex-col">
+      <div className="relative mb-5 aspect-[16/10] overflow-hidden rounded-sm bg-sand">
+        <Image
+          src={a.photo.src}
+          alt=""
+          fill
+          placeholder="blur"
+          sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.04] motion-reduce:transition-none"
+        />
+      </div>
       <p className="eyebrow flex flex-wrap gap-x-3 gap-y-1 text-muted">
         <span className="text-brand">{a.blogLabel}</span>
         <time dateTime={a.dateIso}>{a.date}</time>
