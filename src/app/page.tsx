@@ -162,9 +162,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Instagram Page — directly after the Yarn segments row (ends with Carpet Yarns) */}
-      <InstagramSection />
-
       <StorySection />
       <DirectorMessageSection />
       <VisionMissionValuesSection />
@@ -172,6 +169,7 @@ export default function HomePage() {
       <BlogsSection latest={latest} />
       <SustainabilitySection />
       <TestimonialsSection />
+      <InstagramSection />
       <CertificationsSection />
       <MadeForPeopleSection />
       <BusinessInquirySection />

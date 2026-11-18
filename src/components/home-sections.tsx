@@ -653,7 +653,7 @@ const instagramTiles: Photo[] = [
 export function InstagramSection() {
   const handle = contact.instagram.replace(/\/+$/, "").split("/").pop();
   return (
-    <section aria-labelledby="insta-title" className="section-y border-b border-line bg-sand">
+    <section aria-labelledby="insta-title" className="section-y border-t border-line">
       <div className="container-page">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionHeading
