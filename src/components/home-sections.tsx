@@ -650,12 +650,6 @@ const instagramTiles: Photo[] = [
   photos.skeins,
 ];
 
-/** Reels shown in the Instagram Page section (shortcode from instagram.com/reel/<code>/). */
-const instagramReels = [
-  { code: "DUK07EMEfcw", title: "GeeTex Instagram reel 1" },
-  { code: "DShFVyZDbH_", title: "GeeTex Instagram reel 2" },
-];
-
 export function InstagramSection() {
   const handle = contact.instagram.replace(/\/+$/, "").split("/").pop();
   return (
@@ -679,21 +673,7 @@ export function InstagramSection() {
             Follow @{handle}
           </ButtonLink>
         </div>
-        <ul className="mx-auto mt-12 grid max-w-3xl gap-6 md:grid-cols-2">
-          {instagramReels.map((r) => (
-            <li key={r.code} className="@container mx-auto w-full max-w-[400px]">
-              <iframe
-                src={`https://www.instagram.com/reel/${r.code}/embed/`}
-                title={r.title}
-                loading="lazy"
-                allow="autoplay; encrypted-media; picture-in-picture; clipboard-write"
-                allowFullScreen
-                className="block h-[calc(125cqw+215px)] w-full rounded-sm border border-line bg-surface"
-              />
-            </li>
-          ))}
-        </ul>
-        <Stagger as="ul" className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
+        <Stagger as="ul" className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
           {instagramTiles.map((p) => (
             <StaggerItem as="li" key={p.alt}>
               <a
