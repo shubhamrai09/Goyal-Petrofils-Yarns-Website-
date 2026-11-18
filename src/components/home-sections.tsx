@@ -301,7 +301,7 @@ export function BooksSection() {
 
 /* ── 5. Blogs (latest three) ──────────────────────────────────────────────────── */
 
-export type BlogCardData = ArticleSummary;
+export type BlogCardData = ArticleSummary & { photo: Photo };
 
 export function BlogsSection({ latest }: { latest: BlogCardData[] }) {
   return (
